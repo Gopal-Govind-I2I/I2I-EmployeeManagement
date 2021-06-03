@@ -196,13 +196,13 @@ import com.ideas2it.logger.EmployeeManagementLogger;
           try {
               if (!(employeeService.checkIfIdExists(employeeID)) && (null != dateOfBirth && employeeService.validateEmail(email))) {
                   success = employeeService.addEmployee(name, employeeID, salary, dateOfBirth, email, addresses);
-			      message += (success ? "New employee added successfully" : "Error in adding employee to the roster.");
+                  message += (success ? "New employee added successfully" : "Error in adding employee to the roster.");
               } else {
             	  logger.logWarn("Cannot insert new employee details. Invalid input");
                   message += "Invalid input. Check if employee id, date of birth and email are valid.";
               }
           } catch (EmployeeManagementException eme) {
-        	  logger.logWarn("Cannot insert new employee details. Error display page redirection.");
+              logger.logWarn("Cannot insert new employee details. Error display page redirection.");
               message += (success ? "" : eme.getMessage());
           }
           String attributeName = (success ? "successMessage" : "errorMessage");
@@ -245,7 +245,7 @@ import com.ideas2it.logger.EmployeeManagementLogger;
                   message += "Invalid input. Check if date of birth and email are valid.";
               }
           } catch (EmployeeManagementException eme) {
-        	  logger.logWarn("Cannot update employee. Error display page redirection.");
+              logger.logWarn("Cannot update employee. Error display page redirection.");
               message += (success ? "" : eme.getMessage());
           }
           String attributeName = (success ? "successMessage" : "errorMessage");
@@ -285,7 +285,7 @@ import com.ideas2it.logger.EmployeeManagementLogger;
                success = employeeService.updateExistingAddress(addressID, doorNo, street, locality, pincode, 
                                                                    district, state, employeeID);
            } catch (EmployeeManagementException eme) {
-        	   logger.logWarn("Cannot update address. Error display page redirection.");
+               logger.logWarn("Cannot update address. Error display page redirection.");
                message += (success ? "" : eme.getMessage());
            }
            message += (success ? "Address update successful." : "Address update unsuccessful.");
@@ -317,7 +317,7 @@ import com.ideas2it.logger.EmployeeManagementLogger;
            try {
                success = employeeService.deleteEmployee(employeeID);
            } catch(EmployeeManagementException eme) {
-        	   logger.logWarn("Cannot delete employee. Error display page redirection.");
+               logger.logWarn("Cannot delete employee. Error display page redirection.");
                message += (success ? "" : eme.getMessage());
            }
            message += (success ? "Employee deletion successful." : "Employee deletion unsuccessful.") ;
@@ -382,7 +382,7 @@ import com.ideas2it.logger.EmployeeManagementLogger;
            try {
                success = employeeService.restoreEmployee(employeeID);
            } catch (EmployeeManagementException eme) {
-        	   logger.logWarn("Cannot restore employee. Error display page redirection.");
+               logger.logWarn("Cannot restore employee. Error display page redirection.");
                message += (success ? "" : eme.getMessage());
            }
            message += (success ? "Employee restoration successful." : "Employee restoration unsuccessful.");
@@ -417,7 +417,7 @@ import com.ideas2it.logger.EmployeeManagementLogger;
            try {
                success = employeeService.addNewAddress(employeeID, address);
            } catch(EmployeeManagementException eme) {
-        	   logger.logWarn("Cannot add new address. Error display page redirection.");
+               logger.logWarn("Cannot add new address. Error display page redirection.");
                message += (success ? "" : eme.getMessage());
            }
            message += (success ? "Address addition successful." : "Address addition unsuccessful.");
@@ -484,7 +484,7 @@ import com.ideas2it.logger.EmployeeManagementLogger;
                 success = employeeService.updatePermanentAddress(oldPermanent, newPermanent, employeeID);
             } catch (EmployeeManagementException eme) {
             	logger.logWarn("Cannot update permanent address. Error display page redirection.");
-                 message += (success ? "" : eme.getMessage());
+                message += (success ? "" : eme.getMessage());
             }
             message += (success ? "Permanent address update successful." : "Permanent address update unsuccessful.");
             String attributeName = (success ? "successMessage" : "errorMessage");
