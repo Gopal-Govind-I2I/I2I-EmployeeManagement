@@ -26,7 +26,7 @@ import com.ideas2it.logger.EmployeeManagementLogger;
  */
 
 public class ProjectDaoImpl implements ProjectDao {
-	private EmployeeManagementLogger logger = new EmployeeManagementLogger(ProjectDaoImpl.class);
+    private EmployeeManagementLogger logger = new EmployeeManagementLogger(ProjectDaoImpl.class);
 	
    /**
     * {@inheritdoc}
@@ -50,7 +50,6 @@ public class ProjectDaoImpl implements ProjectDao {
                     transaction.rollback();
                 }
             } catch (Exception e) {
-                //e.printStackTrace();
                 logger.logError(e);
             }
             throw new EmployeeManagementException("Failure to add new project");
@@ -74,7 +73,6 @@ public class ProjectDaoImpl implements ProjectDao {
             project = (Project) session.get(Project.class, projectID);
             logger.logInfo("Project fetched");
         } catch (HibernateException hibernateException) {
-            //hibernateException.printStackTrace();
             logger.logError(hibernateException);
             throw new EmployeeManagementException("Failure to fetch individual project");
         } finally {
@@ -105,12 +103,11 @@ public class ProjectDaoImpl implements ProjectDao {
                     transaction.rollback();
                 }
             } catch (Exception e) {
-                //e.printStackTrace();
                 logger.logError(e);
             }
             throw new EmployeeManagementException("Failure to update project details");
-		} finally {
-			closeSession(session);
+        } finally {
+            closeSession(session);
         }
         return success;
     }
@@ -132,7 +129,7 @@ public class ProjectDaoImpl implements ProjectDao {
             logger.logError(hibernateException);
             throw new EmployeeManagementException("Failure to fetch all projetcs");
         } finally {
-        	closeSession(session);
+            closeSession(session);
         }
         return allProjects;		
     }
