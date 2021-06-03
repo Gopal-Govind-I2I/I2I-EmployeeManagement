@@ -27,7 +27,7 @@ import com.ideas2it.sessionfactory.SessionFactoryYielder;
  */
 
 public class EmployeeDaoImpl implements EmployeeDao{
-	EmployeeManagementLogger logger = new EmployeeManagementLogger(EmployeeDaoImpl.class);
+    EmployeeManagementLogger logger = new EmployeeManagementLogger(EmployeeDaoImpl.class);
 	
    /**
     * {@inheritdoc}
@@ -84,7 +84,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
     public boolean updateEmployeeDetails(Employee employee) throws EmployeeManagementException {
         boolean success = false;
         Session session = null;
-		Transaction transaction = null;
+        Transaction transaction = null;
         try {
             session = SessionFactoryYielder.getSessionFactory().openSession();
             transaction = session.beginTransaction();
