@@ -532,6 +532,6 @@ public class ProjectController extends HttpServlet {
                             break;
                     }
                  }
-     }
+        }
 
 }
