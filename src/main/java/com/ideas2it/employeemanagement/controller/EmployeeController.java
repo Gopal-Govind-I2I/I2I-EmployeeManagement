@@ -56,7 +56,6 @@ import com.ideas2it.logger.EmployeeManagementLogger;
          }
          String dispatchDestination = (errorFlag ? "/ErrorDisplay.jsp" : "/Employee.jsp");
          RequestDispatcher requestDispatcher = request.getRequestDispatcher(dispatchDestination);
-         //logger.addInfo("Fetched all employee data");
          try {
              requestDispatcher.forward(request,  response);
          } catch (ServletException e) {
@@ -650,37 +649,36 @@ import com.ideas2it.logger.EmployeeManagementLogger;
         *                
         */
         public void doGet(HttpServletRequest request, HttpServletResponse response) {
-        	String action = request.getParameter("action");
-    		if (null == action) {
-    			//System.out.print("\nAction is null");
-    			String errorMessage = "Warning: Invalid action";
-    			logger.logWarn("Invalid action. Index page redirection.");
-    			request.setAttribute("errorMsg", errorMessage);
-    			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
-    			try {
-    				requestDispatcher.forward(request, response);
-    			} catch (ServletException | IOException e) {
-    				// TODO Auto-generated catch block
-    				e.printStackTrace();
-    			}
-    		} else {
-    			switch(action) {
-    			    case "displayAll" :
+            String action = request.getParameter("action");
+            if (null == action) {
+                String errorMessage = "Warning: Invalid action";
+                logger.logWarn("Invalid action. Index page redirection.");
+                request.setAttribute("errorMsg", errorMessage);
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
+                try {
+                    requestDispatcher.forward(request, response);
+                } catch (ServletException | IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            } else {
+                switch(action) {
+                    case "displayAll" :
                         fetchAllEmployees(request, response);
                         break;
-    			    case "singleEmployee":
-    			    	fetchSingleEmployee(request, response);
-    			    	break;
-    			    case "getDeletedEmployees":
+                    case "singleEmployee":
+                        fetchSingleEmployee(request, response);
+                        break;
+                    case "getDeletedEmployees":
                         getDeletedEmployees(request, response);
                         break;
-    			    case "getAssignableProjects":
+                    case "getAssignableProjects":
                         getAssignableProjects(request, response);
                         break;
-    		        default:
-    		        	break;
-    			}
-    		}
+                    default:
+                        break;
+                }
+            }
         }
 	
        /**
