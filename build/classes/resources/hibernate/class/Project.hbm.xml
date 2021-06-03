@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name = "com.ideas2it.projectmanagement.model.Project" table = "project">
+        <id name = "id" type = "int" column = "id">
+            <generator class = "increment"/>
+        </id>
+
+        <property name = "name" type = "java.lang.String" column = "name"/>
+        <property name = "manager" type = "java.lang.String" column = "manager"/>
+        <property name = "client" type = "java.lang.String" column = "client"/>
+        <property name = "deadline" type = "date" column = "deadline"/>
+        <property name = "isDeleted" type = "boolean" column = "is_deleted"/>
+		
+        <set name = "assignedEmployees" table = "proj_emp_assignment" lazy = "false">
+            <key column = "project_id"/>
+            <many-to-many column = "employee_id" class = "com.ideas2it.employeemanagement.model.Employee"/>
+        </set>
+    </class>
+</hibernate-mapping>

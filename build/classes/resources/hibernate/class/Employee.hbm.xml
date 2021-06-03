@@ -1,0 +1,27 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+    <class name = "com.ideas2it.employeemanagement.model.Employee" table = "employee">
+        <id name = "id" type = "java.lang.String" column = "id">
+            <generator class = "assigned" />
+        </id>
+		
+        <property name = "name" column = "name" type = "java.lang.String"/>
+        <property name = "salary" column = "salary" type = "double"/>
+        <property name = "dateOfBirth" column = "date_of_birth" type = "date"/>
+        <property name = "emailID" column = "email_id" type = "java.lang.String"/>
+		<property name = "isDeleted" column = "is_deleted" type = "boolean"/>
+        <bag name = "addressList" table = "address" lazy = "false"  cascade = "save-update">
+            <key column = "employee_id"/>
+            <one-to-many class = "com.ideas2it.employeemanagement.model.Address"/>
+        </bag>
+		
+        <set name = "projectSet" table = "proj_emp_assignment" lazy = "false">
+            <key column = "employee_id"/>
+            <many-to-many column = "project_id" class = "com.ideas2it.projectmanagement.model.Project"/>
+        </set>
+    </class>
+</hibernate-mapping>
