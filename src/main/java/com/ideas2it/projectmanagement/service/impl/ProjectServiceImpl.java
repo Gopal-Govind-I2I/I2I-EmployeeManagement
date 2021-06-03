@@ -42,7 +42,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public Project exposeProject(int id) throws EmployeeManagementException {
         Project project = projectDao.fetchIndividualProject(id);
@@ -51,7 +51,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public boolean addProject(String name, String manager, String client, Date deadline) throws EmployeeManagementException {
         Project project = new Project(name, manager, client, deadline);
@@ -60,7 +60,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public boolean checkProjectID(int projectID, int mode) throws EmployeeManagementException {
         Project project = projectDao.fetchIndividualProject(projectID);
@@ -77,7 +77,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public boolean restoreProject(int projectID) throws EmployeeManagementException {
         Project project = projectDao.fetchIndividualProject(projectID);
@@ -87,7 +87,7 @@ public class ProjectServiceImpl implements ProjectService {
 
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public boolean deleteProject(int projectID) throws EmployeeManagementException {
         Project project = projectDao.fetchIndividualProject(projectID);
@@ -98,7 +98,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public List<String> getAllProjects() throws EmployeeManagementException {
         List<Project> allProjects = projectDao.getAllProjects();
@@ -132,7 +132,7 @@ public class ProjectServiceImpl implements ProjectService {
      
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public List<Project> getProjectModelList() throws EmployeeManagementException {
     	List<Project> projects = projectDao.getAllProjects();
@@ -141,7 +141,7 @@ public class ProjectServiceImpl implements ProjectService {
      
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
      public List<List<String[]>> getDeletedProjects() throws EmployeeManagementException {
      	List<List<String[]>> deletedProjects = new ArrayList<List<String[]>>();
@@ -176,7 +176,7 @@ public class ProjectServiceImpl implements ProjectService {
      
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public String searchProjectID(int projectID) throws EmployeeManagementException {
         Project project = projectDao.fetchIndividualProject(projectID);
@@ -199,8 +199,8 @@ public class ProjectServiceImpl implements ProjectService {
      	Project project = projectDao.fetchIndividualProject(projectID);
      	List<String[]> projectDetails = new LinkedList<String[]>();
      	if (null == project) {
-     		String arr[] = new String[1];arr[0]="NULL";
-     		projectDetails.add(arr);
+            String arr[] = new String[1];arr[0]="NULL";
+            projectDetails.add(arr);
      	} else {
      	    projectDetails = constructProjectDetails(project);
      	}
@@ -209,7 +209,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
    /**
     * {@inheritdoc}
- * @throws EmployeeManagementException 
+    * @throws EmployeeManagementException 
     */
     public boolean updateProjectDetails(int projectID, String name, String manager, String client,
                                         Date deadline) throws EmployeeManagementException {
@@ -219,7 +219,7 @@ public class ProjectServiceImpl implements ProjectService {
         String projectClient = (("" == client) ? project.getClient() : client);
         Date projectDeadline = ((null == deadline) ? project.getDeadline() : deadline);
         project.setName(projectName);
-		project.setManager(projectManager);
+        project.setManager(projectManager);
         project.setClient(projectClient);
         project.setDeadline(projectDeadline);
         return projectDao.updateProjectDetails(project);
@@ -239,21 +239,21 @@ public class ProjectServiceImpl implements ProjectService {
      	}
      	List<String[]> employeeList = new ArrayList<String[]>();
      	if (0 < assignedEmployees.size()) {
-     		for(Employee employee : allEmployees) {
-         		if(!assignedEmployees.contains(employee.getId())) {
-         			String details[] = new String[2];
-             		details[0] = "" + employee.getId();
-             		details[1] = employee.getName();
-             		employeeList.add(details);
-         		}
-         	}
+            for(Employee employee : allEmployees) {
+                if(!assignedEmployees.contains(employee.getId())) {
+                    String details[] = new String[2];
+                    details[0] = "" + employee.getId();
+                    details[1] = employee.getName();
+                    employeeList.add(details);
+                }
+            }
      	} else {
-     		for(Employee employee : allEmployees) {
-         			String details[] = new String[2];
-             		details[0] = "" + employee.getId();
-             		details[1] = employee.getName();
-             		employeeList.add(details);
-         	}
+            for(Employee employee : allEmployees) {
+                String details[] = new String[2];
+                details[0] = "" + employee.getId();
+                details[1] = employee.getName();
+                employeeList.add(details);
+            }
      	}
      	return employeeList;
      }
@@ -307,7 +307,7 @@ public class ProjectServiceImpl implements ProjectService {
         for(Employee employee : employeeSet) {
             if (!employee.getIsDeleted()) {
                 employees.add(employee.toString());
-			}
+            }
         }
         return employees;
     }
